@@ -1,0 +1,7 @@
+<ul>
+{% for pod in podcast_list %}
+    <li>{{ pod.title }} <a href="{{ pod.id }}">edit</a> </li>
+{% endfor %}
+</ul>
+
+<a href="add/">add new Podcast</a>
