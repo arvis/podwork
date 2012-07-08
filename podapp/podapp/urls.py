@@ -6,12 +6,13 @@ from pod.feeds import PodcastsFeed
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^pods/$', 'pod.views.index'),
-    url(r'^pods/(?P<pod_id>\d+)/$', 'pod.views.detail'),                       
-    url(r'^pods/delete/(?P<pod_id>\d+)/$', 'pod.views.delele_podcast'),                       
-    url(r'^pods/add/$', 'pod.views.add_podcast'),                       
+    url(r'^$', 'pod.views.index'),
+    url(r'^(?P<pod_id>\d+)/$', 'pod.views.detail'),                       
+    url(r'^delete/(?P<pod_id>\d+)/$', 'pod.views.delele_podcast'),                       
+    url(r'^add/$', 'pod.views.add_podcast'),                       
     url(r'^podsdownload/(?P<pod_url>[A-Za-z0-9_-]+)/$', 'pod.views.download_pod'),                       
     url(r'^latest/feed/$', PodcastsFeed()),
+    (r'^accounts/login/$', 'django.contrib.auth.views.login'),
 
 
     # Uncomment the next line to enable the admin:

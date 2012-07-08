@@ -4,11 +4,13 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 import os
 from django.core.files import File
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     podcast_list=Podcast.objects.all().order_by('-pub_date')
     return render_to_response('pod/index.html', {'podcast_list': podcast_list})
 
+@login_required
 def detail(request, pod_id):
     pod = get_object_or_404(Podcast, pk=pod_id)
     if request.method == 'POST': 
@@ -59,11 +61,13 @@ def download_pod(request, pod_url):
     return response
     
 
+@login_required
 def delele_podcast(request, pod_id):
     pod = get_object_or_404(Podcast, pk=pod_id)
     pod.delete()
     return HttpResponseRedirect('/pods/') 
 
+@login_required
 def add_podcast(request):
     if request.method == 'POST': 
         form = PodcastForm(request.POST, request.FILES) 

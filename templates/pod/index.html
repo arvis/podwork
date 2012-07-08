@@ -1,3 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+
 <ul>
 {% for pod in podcast_list %}
     <li>{{ pod.title }} <a href="{{ pod.id }}">edit</a>  <a href="delete/{{ pod.id }}">delete</a>    </li>
@@ -5,3 +9,5 @@
 </ul>
 
 <a href="add/">add new Podcast</a>
+
+{% endblock %}
