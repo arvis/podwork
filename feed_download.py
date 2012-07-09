@@ -18,6 +18,9 @@ class FeedDownloader(object):
 		out_dir="out/"
 
 		try:
+			if not os.path.exists(out_dir):
+				os.makedirs(out_dir)
+
 		#if file exsists it means it is already downloaded
 			if self.check_file_exists(out_dir+file_name):
 				return

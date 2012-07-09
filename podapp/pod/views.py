@@ -30,7 +30,7 @@ def detail(request, pod_id):
             pod.save()
             #new_podcast = Podcast(podcast = request.FILES['podcast'])
             #new_podcast.save()            
-            return HttpResponseRedirect('/pods') 
+            return HttpResponseRedirect('/') 
     else:
         form = PodcastForm(instance=pod)
 
@@ -62,7 +62,7 @@ def download_pod(request, pod_url):
 def delele_podcast(request, pod_id):
     pod = get_object_or_404(Podcast, pk=pod_id)
     pod.delete()
-    return HttpResponseRedirect('/pods/') 
+    return HttpResponseRedirect('/') 
 
 def add_podcast(request):
     if request.method == 'POST': 
@@ -71,7 +71,7 @@ def add_podcast(request):
             form.save()
             #new_podcast = Podcast(podcast = request.FILES['podcast'])
             #new_podcast.save()            
-            return HttpResponseRedirect('/pods/') 
+            return HttpResponseRedirect('/') 
     else:
         form = PodcastForm()
 
